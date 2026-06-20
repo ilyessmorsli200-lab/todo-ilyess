@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Task Title:</label>
+        <input type="text" name="title" value="{{ task.title }}" required>
+        <label>
+            Completed:
+            <input type="checkbox" name="complete" {% if task.complete %}checked{% endif %}>
+        </label>
+        <button type="submit">Update Task</button>
+    </form>
+    <a href="{% url 'tasks-list' %}">Back to Tasks</a>
+</body>
+</html>
